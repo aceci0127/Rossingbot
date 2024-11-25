@@ -32,16 +32,3 @@ if prompt := st.chat_input("Ask rossigbot anything..."):
         st.markdown(response)
     # Append assistant response to conversation
     st.session_state.conversation.append({"role": "assistant", "content": response})
-
-st.markdown("""
-<style>
-    .bottom-left {
-        position: fixed;
-        bottom: 0;
-        right: 0;
-        padding: 10px;
-        font-size: 1px;
-    }
-</style>
-<div class="bottom-right">Ti amo</div>
-""", unsafe_allow_html=True)
