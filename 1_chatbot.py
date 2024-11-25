@@ -40,8 +40,7 @@ st.markdown("""
         bottom: 0;
         right: 0;
         padding: 10px;
-        font-size: 2px;
-        background-color: rgba(255, 255, 255, 0.7);
+        font-size: 1px;
     }
 </style>
 <div class="bottom-right">Ti amo</div>
