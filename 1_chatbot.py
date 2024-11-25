@@ -9,7 +9,7 @@ st.title("Rossigbot   🐢")
 
 st.markdown("""
     <style>
-        .bottom-right {
+        .bottom-left {
             position: fixed;
             bottom: 0;
             right: 0;
