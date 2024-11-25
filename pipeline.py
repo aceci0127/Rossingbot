@@ -9,15 +9,21 @@ from pinecone import Pinecone
 import cohere
 import os
 from dotenv import load_dotenv 
+import json
 
 # Load environment variables from .env file
 load_dotenv("search/.env")
 
 class AthenaPipeline:
     def __init__(self, query, conversation_list, namespace):
+
+        if os.path.exists("api_key.json"):
+            with open("api_key.json", "r") as file:
+                data = json.load(file)
+                return data.get("api_key", None)
         
         # Retrieve API keys from environment variables
-        openai_api_key = os.getenv('OPENAI_API_KEY')
+        #openai_api_key = os.getenv('OPENAI_API_KEY')
         pinecone_api_key = os.getenv('PINECONE_API_KEY')
         cohere_api_key = os.getenv('COHERE_API_KEY')
         # Initialize query and memory variables
@@ -27,13 +33,21 @@ class AthenaPipeline:
         self.namespace = ""
 
         # Initialize OpenAI client with API key
-        self.client = openai.OpenAI(api_key=openai_api_key)
+        self.client = openai.OpenAI(api_key=api_key)
 
         # Initialize Pinecone client with API key
         self.pc = Pinecone(api_key=pinecone_api_key)
 
         # Initialize Cohere client with API key
         self.co = cohere.Client(api_key=cohere_api_key)
+    
+    # Function to load API key from the JSON file
+    def load_api_key():
+        if os.path.exists("api_key.json"):
+            with open("api_key.json", "r") as file:
+                data = json.load(file)
+                return data.get("api_key", None)
+        return None
 
     def perform_embedding(self, text, model="text-embedding-3-large"):
         logging.info("Performing embedding for the provided text...")
