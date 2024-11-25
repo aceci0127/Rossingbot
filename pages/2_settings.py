@@ -4,4 +4,4 @@ import streamlit as st
 st.set_page_config(page_title="Settings", page_icon="🐢")
 
 # Title for the Streamlit app
-st.title("Still no setting here patata, tra poco metto qualcosa")
+st.title("Still no settings here patata, tra poco metto qualcosa")

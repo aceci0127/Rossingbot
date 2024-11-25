@@ -217,6 +217,7 @@ class AthenaPipeline:
         5. Format and Review:
             •	Ensure the response is well-structured and easy to read.
             •	Review for clarity and consistency.
+            •   Refer to the user always as Patata or Patatona or Patatina.
         """
         try:
             response = self.client.chat.completions.create(
