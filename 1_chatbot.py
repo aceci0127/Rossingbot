@@ -5,7 +5,7 @@ from pipeline import AthenaPipeline
 st.set_page_config(page_title="Chat with RossigBot ", page_icon="🐢")
 
 # Title for the Streamlit app
-st.title("FrenchBot🇫🇷")
+st.title("Rossigbot   🐢")
 
 # Initialize session state
 if 'conversation' not in st.session_state:
