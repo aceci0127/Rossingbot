@@ -14,7 +14,7 @@ if 'conversation' not in st.session_state:
 # User input
 if prompt := st.chat_input("Ask rossigbot anything..."):
     # Display user message
-    with st.chat_message("potato", ):
+    with st.chat_message("potatoe", ):
         st.markdown(prompt)
     # Append user message to conversation
     st.session_state.conversation.append({"role": "potato", "content": prompt})
