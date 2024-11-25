@@ -17,11 +17,6 @@ load_dotenv("search/.env")
 
 class AthenaPipeline:
     def __init__(self, query, conversation_list, namespace):
-
-        if os.path.exists("api_key.json"):
-            with open("api_key.json", "r") as file:
-                data = json.load(file)
-                return data.get("api_key", None)
         
         # Retrieve API keys from environment variables
         #openai_api_key = os.getenv('OPENAI_API_KEY')
