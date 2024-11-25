@@ -21,7 +21,7 @@ if prompt := st.chat_input("Ask rossigbot anything..."):
 
     # Generate response
     pipeline = AthenaPipeline(prompt, st.session_state.conversation, 'DORA')
-    response = pipeline.run_pipeline(prompt, st.session_state.conversation, 'DORA', index_name='demo-escp')
+    response = pipeline.run_pipeline(prompt, st.session_state.conversation, 'DORA')
     st.session_state.conversation.append(prompt)
     st.session_state.conversation.append(response)
 

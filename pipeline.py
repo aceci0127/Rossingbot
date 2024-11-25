@@ -238,14 +238,14 @@ class AthenaPipeline:
             return "Failed to generate response: {e}"
 
 
-    def run_pipeline(self, query, conversation_list, namespace, index_name):
+    def run_pipeline(self, query, conversation_list, namespace):
         # Generate refined queries and possible answers
         memory = self.memory_generation(conversation_list)  # Generate a summary of the conversation
         logging.info("Generating refined query, HyDE response, and sub-queries...")
         rq = self.refined_query(query, memory)  # Refined version of the query
         hyde = self.HyDE(rq)  # Generate a response using the HyDE method
         sq = self.sub_queries(rq)  # Generate sub-queries if the query is complex
-        index_name = "demo-escp"
+        index_name = "eli-demo"
 
         # Perform searches using the refined query, HyDE answer, and sub-queries
         logging.info(f"Performing searches with refined query, HyDE, and sub-queries in namespace: {namespace}\n")
