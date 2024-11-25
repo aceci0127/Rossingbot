@@ -10,7 +10,6 @@ st.title("Rossigbot   🐢")
 # Initialize session state
 if 'conversation' not in st.session_state:
     st.session_state.conversation = []
-    conv = []
 
 # User input
 if prompt := st.chat_input("Ask rossigbot anything..."):
@@ -21,10 +20,12 @@ if prompt := st.chat_input("Ask rossigbot anything..."):
     st.session_state.conversation.append({"role": "user", "content": prompt})
 
     # Generate response
-    pipeline = AthenaPipeline(prompt, [], 'DORA')
-    response = pipeline.run_pipeline(prompt, [], 'DORA', index_name='demo-escp')
-    conv.append(prompt)
-    conv.append(response)
+    pipeline = AthenaPipeline(prompt, st.session_state.conversation, 'DORA')
+    response = pipeline.run_pipeline(prompt, st.session_state.conversation, 'DORA', index_name='demo-escp')
+    st.session_state.conversation.append(prompt)
+    st.session_state.conversation.append(response)
+
+    st.session_state.conversation.append({"role": "chatbot", "content": response})
 
     # Display assistant response
     with st.chat_message("assistant"):
