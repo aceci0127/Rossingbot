@@ -1,4 +1,5 @@
 import logging
+import streamlit as st
 
 # Configure logging to show info level messages with timestamp and log level
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -33,21 +34,13 @@ class AthenaPipeline:
         self.namespace = ""
 
         # Initialize OpenAI client with API key
-        self.client = openai.OpenAI(api_key=api_key)
+        self.client = openai.OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
 
         # Initialize Pinecone client with API key
-        self.pc = Pinecone(api_key=pinecone_api_key)
+        self.pc = Pinecone(api_key=st.secrets["PINECONE_API_KEY"])
 
         # Initialize Cohere client with API key
-        self.co = cohere.Client(api_key=cohere_api_key)
-    
-    # Function to load API key from the JSON file
-    def load_api_key():
-        if os.path.exists("api_key.json"):
-            with open("api_key.json", "r") as file:
-                data = json.load(file)
-                return data.get("api_key", None)
-        return None
+        self.co = cohere.Client(api_key=st.secrets["COHERE_API_KEY"])
 
     def perform_embedding(self, text, model="text-embedding-3-large"):
         logging.info("Performing embedding for the provided text...")
